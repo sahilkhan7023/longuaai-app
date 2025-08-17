@@ -1,20 +1,20 @@
-# Use Node LTS
+# Use Node.js 18 (compatible with your "engines" requirement)
 FROM node:18
 
 # Set working directory
 WORKDIR /app
 
-# Copy backend package files first for caching
+# Copy backend package files
 COPY backend/package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --production
 
-# Copy rest of backend code
+# Copy backend source code
 COPY backend ./
 
-# Expose backend port (change 3000 if your server uses another)
-EXPOSE 3000
+# Expose the backend port (your package.json docker run maps 5000)
+EXPOSE 5000
 
-# Start server
+# Run backend
 CMD ["npm", "start"]
