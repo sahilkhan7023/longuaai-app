@@ -3,7 +3,9 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "buildCommand": "cd backend && npm install",
-    "startCommand": "cd backend && npm start"
+    "workdir": "backend",
+    "buildCommand": "npm install",
+    "startCommand": "npm start"
   }
 }
+
