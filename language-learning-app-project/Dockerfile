@@ -1,20 +1,20 @@
-# Use Node.js 18 (compatible with your "engines" requirement)
+# Use Node.js base image
 FROM node:18
 
 # Set working directory
 WORKDIR /app
 
-# Copy backend package files
+# Copy backend package.json and package-lock.json
 COPY backend/package*.json ./
 
 # Install dependencies
-RUN npm install --production
+RUN npm install
 
-# Copy backend source code
-COPY backend ./
+# Copy the backend code
+COPY backend/ ./
 
-# Expose the backend port (your package.json docker run maps 5000)
+# Expose the port your app runs on
 EXPOSE 5000
 
-# Run backend
+# Start the app
 CMD ["npm", "start"]
